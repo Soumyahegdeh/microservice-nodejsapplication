@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: users-deployment-container
-        image: my-service-image:latest
+        image: soumyahe/users-service:latest
         ports:
         - containerPort: 3000

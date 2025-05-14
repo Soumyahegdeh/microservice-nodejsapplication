@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: threads-deployment-container
-        image: my-service-image:latest
+        image: soumyahe/threads-service:latest
         ports:
         - containerPort: 3000

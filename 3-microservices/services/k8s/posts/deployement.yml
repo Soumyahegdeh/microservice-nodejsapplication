@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: posts-deployment-container
-        image: my-service-image:latest
+        image: soumyahe/posts-service:latest
         ports:
         - containerPort: 3000
