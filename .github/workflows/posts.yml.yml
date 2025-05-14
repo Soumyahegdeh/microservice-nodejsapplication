@@ -1,0 +1,44 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push post service
+        uses: docker/build-push-action@v5
+        with:
+          context: ./3-microservices/services/posts
+          file: ./3-microservices/services/posts/Dockerfile
+          push: true
+          tags: soumyahe/posts-service:latest
+
+      - name: Build and push threads service
+        uses: docker/build-push-action@v5
+        with:
+          context: ./3-microservices/services/threads
+          file: ./3-microservices/services/threads/Dockerfile
+          push: true
+          tags: soumyahe/threads-service:latest
+
+      - name: Build and push user service
+        uses: docker/build-push-action@v5
+        with:
+          context: ./3-microservices/services/users
+          file: ./3-microservices/services/users/Dockerfile
+          push: true
+          tags: soumyahe/users-service:latest

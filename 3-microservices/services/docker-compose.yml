@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  user-service:
+    build:
+      context: ./posts
+    ports:
+      - "3000:3000"
+
+  post-service:
+    build:
+      context: ./threads
+    ports:
+      - "3001:3000"
+
+  thread-service:
+    build:
+      context: ./users
+    ports:
+      - "3002:3000"

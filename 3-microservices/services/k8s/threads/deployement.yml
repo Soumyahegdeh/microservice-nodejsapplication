@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: threads-deployment
+  labels:
+    app: threads-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: threads-deployment
+  template:
+    metadata:
+      labels:
+        app: threads-deployment
+    spec:
+      containers:
+      - name: threads-deployment-container
+        image: my-service-image:latest
+        ports:
+        - containerPort: 3000
